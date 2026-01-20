@@ -1,0 +1,27 @@
+@import "tailwindcss";
+
+/* Custom theme vars */
+@theme {
+  --color-primary: 222.2 47.4% 11.2%;
+  --color-primary-foreground: 210 40% 98%;
+  --color-secondary: 210 40% 96%;
+  --color-secondary-foreground: 222.2 47.4% 11.2%;
+  --color-background: 0 0% 100%;
+  --color-foreground: 222.2 84% 4.9%;
+  --color-muted: 210 40% 96%;
+  --color-muted-foreground: 215.4 16.3% 46.9%;
+  --color-card: 0 0% 100%;
+  --color-card-foreground: 222.2 84% 4.9%;
+  --color-border: 214.3 31.8% 91.4%;
+  --color-input: 214.3 31.8% 91.4%;
+  --color-ring: 222.2 84% 4.9%;
+}
+
+/* Fonts */
+html {
+  font-family: Inter, Cairo, ui-sans-serif, system-ui, sans-serif;
+}
+
+[dir="rtl"] {
+  font-family: Cairo, Inter, ui-sans-serif, sans-serif;
+}

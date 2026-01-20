@@ -1,0 +1,16 @@
+# Dependencies
+node_modules/
+**/.next/cache/
+**/dist/
+**/coverage/
+
+# Env
+.env
+.env.local
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log

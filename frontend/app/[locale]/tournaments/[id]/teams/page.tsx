@@ -1,0 +1,188 @@
+"use client";
+import { useState, useEffect } from "react";
+import { useParams } from "next/navigation";
+import Link from "next/link";
+import type { Team, Tournament } from "@/types/api";
+import { LoadingSpinner } from "@/components/LoadingSpinner";
+import { ErrorBanner } from "@/components/ErrorBanner";
+import { CreateEditModal } from "@/components/CreateEditModal";
+import { FormInput } from "@/components/FormInput";
+import { getErrorMessage, teamsApi, tournamentApi } from "@/lib/api";
+import { useTranslations } from "next-intl";
+import { Sport, TournamentStatus } from "@/enums/enums";
+import TeamCard from "@/components/team/TeamCard";
+import { SearchInput } from "@/components/SearchInput";
+import { useAuth } from "@/hooks/useAuth";
+
+export default function TournamentTeamsPage() {
+  const t = useTranslations("tournaments.teams");
+  const params = useParams();
+  const tournamentId = params.id as string;
+
+  const [tournament, setTournament] = useState<Tournament | null>(null);
+  const [teams, setTeams] = useState<Team[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [updating, setUpdating] = useState(false);
+  const [error, setError] = useState("");
+  const [showCreateTeam, setShowCreateTeam] = useState(false);
+  const [newTeam, setNewTeam] = useState({
+    name: "",
+    sport: "football",
+  });
+  const [q, setQ] = useState<string>("");
+  const { user } = useAuth();
+
+  useEffect(() => {
+    if (params.id) fetchTournamentTeams();
+  }, [params.id, q]);
+
+  const fetchTournamentTeams = async () => {
+    try {
+      setLoading(true);
+      setError("");
+
+      const [teamsData, tournamentData] = await Promise.all([
+        teamsApi.getTournamentTeams(params.id as string, q),
+        tournamentApi.getTournament(params.id as string),
+      ]);
+
+      setTeams(teamsData);
+      setTournament(tournamentData);
+
+      if (teamsData?.length) {
+        setNewTeam((prev) => ({
+          ...prev,
+          sport: teamsData[0]?.tournament?.sport,
+        }));
+      }
+    } catch (error: unknown) {
+      setError(t("errors.loadTeams"));
+      setError(getErrorMessage(error));
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleCreateTeam = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setUpdating(true);
+    setError("");
+
+    try {
+      await teamsApi.createTeam({
+        tournamentId: params.id as string,
+        name: newTeam.name,
+      });
+      setShowCreateTeam(false);
+      setNewTeam({
+        name: "",
+        sport: tournament?.sport || "football",
+      });
+      await fetchTournamentTeams();
+    } catch (error: unknown) {
+      setError(t("errors.createTeam"));
+      setError(getErrorMessage(error));
+    } finally {
+      setUpdating(false);
+    }
+  };
+
+  if (loading) return <LoadingSpinner size="xl" message={t("loading")} />;
+
+  if (!tournament) {
+    return (
+      <div className="p-8 text-center">
+        <div className="text-gray-500 mb-4">{t("notFound")}</div>
+        <Link
+          href={`/tournaments/${tournamentId}`}
+          className="text-indigo-600 hover:underline"
+        >
+          ← {t("backToTournaments")}
+        </Link>
+      </div>
+    );
+  }
+
+  return (
+    <div className="p-8 max-w-7xl mx-auto space-y-12">
+      <ErrorBanner error={error} onClear={() => setError("")} />
+
+      <div className="flex justify-between items-center">
+        <div>
+          <Link
+            href={`/tournaments/${tournamentId}`}
+            className="text-indigo-600 hover:text-indigo-500 mb-4 inline-block"
+          >
+            ← {t("backToTournaments")}
+          </Link>
+          <h1 className="text-4xl font-bold text-gray-900 mb-2">
+            {tournament.name}
+          </h1>
+          <div className="flex gap-4 text-sm text-gray-500 items-center">
+            <span className="px-3 py-1 bg-indigo-100 text-indigo-800 rounded-full text-xs font-medium capitalize">
+              {tournament.sport}
+            </span>
+            <span>
+              {teams.length}/{tournament.maxTeams} {t("teams")}
+            </span>
+          </div>
+        </div>
+        {user?.id == tournament.creator.id &&
+          tournament.status === TournamentStatus.REGISTRATION &&
+          tournament.currentTeams < tournament.maxTeams && (
+            <button
+              onClick={() => setShowCreateTeam(true)}
+              disabled={updating}
+              className="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 flex items-center gap-2 disabled:opacity-50"
+            >
+              {updating ? t("creating") : t("createTeam")}
+            </button>
+          )}
+      </div>
+
+      {/* Teams Grid */}
+      <section>
+        <div className="flex flex-row gap-4 items-center mb-8 justify-between">
+          <h2 className="text-2xl font-bold">
+            {t("teamsTitle", { count: teams.length })}
+          </h2>
+          <div className="flex flex-col sm:flex-row gap-4 items-center">
+            <label className="text-lg font-bold text-gray-900 whitespace-nowrap">
+              {t("search")}
+            </label>
+            <SearchInput
+              value={q}
+              onChange={setQ}
+              placeholder={t("search_placeholder")}
+            />
+          </div>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {teams.map((team) => (
+            <TeamCard key={team.id} team={team} />
+          ))}
+        </div>
+      </section>
+
+      {/* Create Team Modal */}
+      <CreateEditModal
+        isOpen={showCreateTeam}
+        onClose={() => setShowCreateTeam(false)}
+        title={t("createModal.title")}
+        onSubmit={handleCreateTeam}
+        updating={updating}
+        submitText={t("createTeam")}
+      >
+        <FormInput
+          label={t("createModal.name")}
+          id="team-name"
+          value={newTeam.name}
+          onChange={(e) => setNewTeam({ ...newTeam, name: e.target.value })}
+          placeholder="e.g. FC Galaxy"
+          required
+          disabled={updating}
+        />
+      </CreateEditModal>
+    </div>
+  );
+}

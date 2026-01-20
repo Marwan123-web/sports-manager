@@ -1,0 +1,168 @@
+import { MatchStatus, Sport, TournamentStatus } from "@/enums/enums";
+
+export interface CreateTournamentDto {
+  name: string;
+  sport: Sport;
+  maxTeams: number;
+  startDate: string; // YYYY-MM-DD
+  endDate: string; // YYYY-MM-DD
+  status?: TournamentStatus;
+}
+
+export interface Tournament {
+  id: string;
+  name: string;
+  sport: Sport;
+  maxTeams: number;
+  startDate: string;
+  endDate: string;
+  status: TournamentStatus;
+  currentTeams: number;
+  isActive: boolean;
+  creator: {
+    id: number;
+    email: string;
+  };
+  createdAt: string;
+}
+
+export interface Team {
+  id: string;
+  name: string;
+  sport: Sport;
+  tournament: Tournament;
+  players: Player[];
+}
+
+export interface TeamStanding {
+  position: number;
+  team: {
+    id: string;
+    name: string;
+  };
+  wins: number;
+  draws: number;
+  losses: number;
+  goalsFor: number;
+  goalsAgainst: number;
+  goalDifference: number;
+  points: number;
+}
+
+export interface User {
+  id: number;
+  email?: string;
+  username?: string;
+  name: string;
+  surname: string;
+  role: SystemRoles;
+  createdAt: string;
+  updatedAt: string;
+  isActive: boolean;
+  tournaments?: Tournament[];
+}
+
+export interface Player {
+  id: string;
+  name: string;
+  position: string;
+  jerseyNumber: number | null;
+  isCaptain: boolean;
+}
+
+export interface NewPlayer {
+  name: string;
+  position: string;
+  jerseyNumber: number | null;
+  isCaptain: boolean;
+  // teamId: string;
+}
+
+export interface Field {
+  id: string;
+  name: string;
+  sport: Sport;
+  capacity: number;
+  address: string;
+  pricePerHour: number;
+  isAvailable: boolean;
+  bookings: Booking[];
+}
+
+export interface Booking {
+  id: string;
+  date: string;
+  startTime: string;
+  endTime: string;
+  totalPrice: string;
+  fieldId?: string;
+  field: Field;
+  userId?: number;
+  user: User;
+  status?: string;
+  tournamentId?: string;
+  createdAt: string;
+  isActive: boolean;
+}
+
+export interface Match {
+  id: string;
+  round: number;
+  status: string;
+  scoreTeam1: number | null;
+  scoreTeam2: number | null;
+  tournament: Tournament;
+  tournamentId: string;
+  team1: MatchTeam;
+  team1Id: string;
+  team2: MatchTeam;
+  team2Id: string;
+  scheduledAt: string;
+  createdAt: string;
+}
+
+export interface MatchTeam {
+  id: string;
+  name: string;
+  tournamentId: string;
+  isActive: boolean;
+  createdAt: string;
+}
+
+export interface ApiError {
+  statusCode: number;
+  message: {
+    error: string;
+    message: string;
+    statusCode: number;
+  };
+  timestamp: string;
+  path: string;
+}
+
+export enum SystemRoles {
+  ADMIN = "admin",
+  USER = "user",
+}
+
+export interface NextIntlRequestConfig {
+  messages: Record<string, string | Record<string, unknown>>;
+  locale: string;
+  timeZone?: string;
+  now?: Date;
+}
+
+export interface Slot {
+  time: string;
+  available: boolean;
+  status: SlotStatus;
+  canBeStart?: boolean;
+  bookerName?: string;
+}
+
+export enum SlotStatus {
+  AVAILABLE = "available",
+  BOOKED = "booked",
+  PAST = "past",
+  MYBOOKING = "myBooking",
+}
