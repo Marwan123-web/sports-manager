@@ -1,11 +1,6 @@
-FROM node:20-slim
-
+FROM node:20-alpine
 WORKDIR /app
-COPY package*.json ./
-RUN npm ci --legacy-peer-deps
-
+COPY package*.json .
+RUN npm ci
 COPY . .
-RUN npm run build
-
-EXPOSE 3000
-CMD ["npm", "start"]
+CMD ["sh", "-c", "npm ci && npm run dev"]
