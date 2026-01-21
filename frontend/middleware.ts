@@ -25,6 +25,7 @@ export function middleware(request: NextRequest) {
   const i18nResponse = createMiddleware({
     locales: ["en", "ar", "it"],
     defaultLocale: "en",
+    localePrefix: "never",
   })(request);
 
   const cleanPath = getCleanPath(pathname);

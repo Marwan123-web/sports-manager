@@ -1,15 +1,11 @@
 import { getRequestConfig } from "next-intl/server";
-import { notFound } from "next/navigation";
 
-export default getRequestConfig(async (params) => {
-  // ✅ Next.js 14+ = params object
-  let locale = params.locale || "en"; // Fallback
+export default getRequestConfig(async ({ requestLocale }) => {
+  const defaultLocale = await requestLocale;
 
   const validLocales = ["en", "ar", "it"];
 
-  if (!validLocales.includes(locale)) {
-    locale = "en";
-  }
+  const locale = validLocales.includes(defaultLocale) ? defaultLocale : "en";
 
   try {
     const messages = (await import(`../messages/${locale}.json`)).default;

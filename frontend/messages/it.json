@@ -8,12 +8,16 @@
     }
   },
   "navbar": {
+    "brandName": "Sports Manager",
     "tournaments": "Tornei",
     "fields": "Campi",
-    "welcome": "Ciao, {{name}}",
+    "welcome": "Ciao, {name}",
     "login": "Accedi",
     "logout": "Esci",
-    "user": "Utente"
+    "user": "Utente",
+    "en": "English",
+    "it": "Italiano",
+    "ar": "Arabo"
   },
   "common": {
     "error": {
@@ -22,7 +26,7 @@
     "search": {
       "placeholder": "Cerca per nome, email..."
     },
-    "noData": "Nessun dato trovato"
+    "noData": "Nessun dato trovato che corrisponda ai tuoi criteri"
   },
   "form": {
     "name": "Nome",
@@ -32,9 +36,339 @@
     "password": "Password",
     "role": "Ruolo"
   },
-  "pages": {
-    "adminUsers": {
-      "title": "Gestione Utenti"
+  "adminUsers": {
+    "title": "Gestione Utenti",
+    "loading": "Caricamento utenti...",
+    "searchPlaceholder": "Cerca per email, nome utente, nome, cognome...",
+    "columns": {
+      "id": "ID",
+      "name": "Nome",
+      "email": "Email",
+      "username": "Nome Utente",
+      "role": "Ruolo",
+      "tournaments": "Tornei Creati"
+    },
+    "editModal": {
+      "title": "Modifica Utente",
+      "name": "Nome",
+      "surname": "Cognome",
+      "email": "Email",
+      "username": "Nome Utente",
+      "role": "Ruolo"
+    },
+    "roles": {
+      "user": "Utente",
+      "admin": "Admin"
+    },
+    "suspendModal": {
+      "title": "Sospendi utente?",
+      "message": "Sei sicuro di voler sospendere {user}? Non potrà più accedere al suo account.",
+      "user": "questo utente"
+    },
+    "cancel": "Annulla",
+    "confirm": "Conferma",
+    "suspending": "Sospensione in corso..."
+  },
+  "auth": {
+    "login": {
+      "title": "Accedi al tuo account",
+      "email": "Indirizzo Email",
+      "username": "Nome Utente",
+      "password": "Password",
+      "submit": "Accedi",
+      "submitting": "Accesso in corso...",
+      "registerLink": "Non hai un account? Registrati"
+    },
+    "register": {
+      "title": "Crea il tuo account",
+      "name": "Nome",
+      "surname": "Cognome",
+      "username": "Nome Utente",
+      "passwordConfirmation": "Conferma Password",
+      "email": "Indirizzo Email",
+      "password": "Password",
+      "submit": "Crea Account",
+      "submitting": "Creazione account in corso...",
+      "loginLink": "Hai già un account? Accedi",
+      "matchPasswords": "Le password corrispondono ✓",
+      "notMatchPasswords": "Le password non corrispondono"
+    }
+  },
+  "fields": {
+    "title": "Campi & Prenotazioni",
+    "backToTournaments": "Torna ai Tornei",
+    "addField": "Aggiungi Campo",
+    "creating": "Creazione in corso...",
+    "availableFields": "Campi Disponibili",
+    "players": "giocatori",
+    "perHour": "per ora",
+    "bookNow": "Prenota Ora",
+    "booking": "Prenotazione in corso...",
+    "slotRange": "09:00 - 20:00",
+    "free": "libero",
+    "selectDateFirst": "Seleziona una data per vedere gli slot",
+    "selectSlots": "Seleziona slot",
+    "basePrice": "Prezzo Base ${price}/ora",
+    "pickDate": "Scegli prima una data",
+    "seeAvailability": "per vedere la disponibilità",
+    "selectStartEnd": "Clicca inizio → fine slot",
+    "selectEndTime": "Seleziona orario fine →",
+    "slotsFree": "slot liberi",
+    "pastTime": "Orario passato",
+    "slotBooked": "Slot prenotato",
+    "startTime": "Inizio",
+    "endTime": "Fine",
+    "selectSlot": "Seleziona slot",
+    "overlapsBooking": "Si sovrappone a prenotazione esistente",
+    "selectDate": "Seleziona Data",
+    "selectSport": "Seleziona Sport",
+    "AllSports": "Tutti gli Sport",
+    "clickSlot1h": "Clicca Slot 1H",
+    "clickFor1h": "Clicca Per 1H",
+    "selectSlot1h": "Seleziona Slot 1H",
+    "search": "Cerca",
+    "search_placeholder": "Cerca Campo...",
+    "createModal": {
+      "title": "Aggiungi Nuovo Campo",
+      "name": "Nome Campo",
+      "sport": "Sport",
+      "capacity": "Capacità",
+      "address": "Indirizzo",
+      "price": "Prezzo per ora ($)"
+    },
+    "createField": "Crea Campo",
+    "sports": {
+      "football": "Calcio",
+      "volleyball": "Pallavolo",
+      "basketball": "Pallacanestro"
+    },
+    "confirmBooking": "Conferma prenotazione?",
+    "errors": {
+      "fields": "Impossibile caricare i campi. Riprova.",
+      "bookings": "Impossibile caricare le prenotazioni. Riprova.",
+      "createField": "Impossibile creare il campo. Riprova.",
+      "bookField": "Impossibile prenotare il campo. Controlla la disponibilità e riprova."
+    },
+    "loading": "Caricamento campi..."
+  },
+  "profile": {
+    "loading": "Caricamento profilo...",
+    "notFound": "Profilo non trovato",
+    "memberSince": "Membro dal 2025",
+    "settingsTitle": "Impostazioni Profilo",
+    "editProfile": "Modifica Profilo",
+    "updating": "Aggiornamento in corso...",
+    "username": "Nome Utente",
+    "email": "Email",
+    "notSet": "Non impostato",
+    "tournamentsTitle": "I Miei Tornei ({count})",
+    "createTournament": "Crea Torneo",
+    "noTournaments": "Nessun torneo creato ancora",
+    "createFirst": "Crea Primo Torneo",
+    "teams": "squadre",
+    "edit": "Modifica",
+    "delete": "Elimina",
+    "myBookingsTitle": "Le Mie Prenotazioni",
+    "confirmCancelBooking": "Sei sicuro di voler annullare questa prenotazione?",
+    "confirmDeleteTournament": "Sei sicuro di voler eliminare questo Torneo?",
+    "cancelBooking": "Annulla Prenotazione",
+    "editTournament": "Modifica Torneo",
+    "updateButton": "aggiorna",
+    "createButton": "Crea",
+    "noBookings": "Nessuna Prenotazione ancora",
+    "sports": {
+      "football": "Calcio",
+      "volleyball": "Pallavolo",
+      "basketball": "Pallacanestro"
+    },
+    "modal": {
+      "name": "Torneo",
+      "sport": "Sport",
+      "startDate": "Data Inizio",
+      "endDate": "Data Fine",
+      "maxTeams": "Max Squadre"
+    },
+    "editModal": {
+      "title": "Modifica Profilo"
+    },
+    "saveChanges": "Salva Modifiche"
+  },
+  "teams": {
+    "detail": {
+      "loading": "Caricamento squadra...",
+      "notFound": "Squadra non trovata",
+      "backToTournaments": "Torna ai Tornei",
+      "backToTeams": "Torna alle Squadre",
+      "addPlayer": "Aggiungi Giocatore",
+      "adding": "Aggiunta in corso...",
+      "rosterTitle": "Rosa ({count} giocatori)",
+      "jersey": "#",
+      "name": "Nome",
+      "position": "Posizione",
+      "captain": "Capitano",
+      "actions": "Azioni",
+      "captainLabel": "Capitano",
+      "remove": "Rimuovi",
+      "removing": "Rimozione in corso...",
+      "noPlayers": "Nessun giocatore ancora. Aggiungi il primo giocatore!",
+      "search": "Cerca",
+      "search_placeholder": "Cerca Giocatore...",
+      "addModal": {
+        "title": "Aggiungi Nuovo Giocatore",
+        "name": "Nome",
+        "position": "Posizione",
+        "jersey": "Maglia #",
+        "captain": "Capitano"
+      },
+      "errors": {
+        "loadTeam": "Impossibile caricare la squadra. Riprova.",
+        "addPlayer": "Impossibile aggiungere il giocatore. Riprova.",
+        "deletePlayer": "Impossibile rimuovere il giocatore. Riprova."
+      },
+      "positions": {
+        "goalkeeper": "Portiere",
+        "center_back": "Difensore Centrale",
+        "right_back": "Terzino Destro",
+        "left_back": "Terzino Sinistro",
+        "defensive_midfielder": "Mediano Difensivo",
+        "central_midfielder": "Centrocampista Centrale",
+        "attacking_midfielder": "Centrocampista Offensivo",
+        "right_winger": "Ala Destra",
+        "left_winger": "Ala Sinistra",
+        "striker": "Attaccante",
+
+        "point_guard": "Playmaker",
+        "shooting_guard": "Guardia Tiratrice",
+        "small_forward": "Ala Piccola",
+        "power_forward": "Ala Grande",
+        "center": "Pivote",
+
+        "setter": "Palleggiatore",
+        "outside_hitter": "Schiacciatore",
+        "opposite_hitter": "Opposto",
+        "middle_blocker": "Centrale",
+        "libero": "Libero",
+        "defensive_specialist": "Specialista Difensivo"
+      },
+      "confirmDeletePlayer": "Rimuovere questo giocatore?"
+    }
+  },
+  "tournaments": {
+    "detail": {
+      "loading": "Caricamento torneo...",
+      "notFound": "Torneo non trovato",
+      "backToTournaments": "Torna ai Tornei",
+      "teams": "squadre",
+      "standingsTitle": "Classifica",
+      "standings": {
+        "pos": "Pos",
+        "team": "Squadra",
+        "p": "P",
+        "w": "V",
+        "d": "P",
+        "l": "S",
+        "gd": "DF",
+        "pts": "Pt"
+      },
+      "viewMatches": "Vai alle Partite →",
+      "teamsTitle": "{current}/{max} Squadre",
+      "viewAll": "Vedi Tutte le Squadre",
+      "teamDetails": "Dettagli Squadra",
+      "createTeam": "Crea Squadra",
+      "creating": "Creazione in corso...",
+      "createModal": {
+        "title": "Crea Squadra per {tournament}",
+        "name": "Nome Squadra",
+        "sport": "Sport"
+      },
+      "sports": {
+        "football": "Calcio",
+        "volleyball": "Pallavolo",
+        "basketball": "Pallacanestro"
+      },
+      "changeStatusConfirmation": "Sei sicuro di voler cambiare lo stato del torneo"
+    },
+    "list": {
+      "loading": "Caricamento tornei...",
+      "title": "Tornei",
+      "teams": "squadre",
+      "createButton": "Crea Torneo",
+      "starts": "Inizia: {date}",
+      "teamCount": "{current}/{max} squadre",
+      "viewDetails": "Vedi Dettagli",
+      "selectDate": "Seleziona Data",
+      "selectSport": "Seleziona Sport",
+      "AllSports": "Tutti gli Sport",
+      "search": "Cerca",
+      "search_placeholder": "Cerca Torneo...",
+      "edit": "Modifica",
+      "delete": "Elimina",
+      "editTournament": "Modifica Torneo",
+      "updateButton": "aggiorna",
+      "confirmDeleteTournament": "Sei sicuro di voler eliminare questo Torneo?",
+      "modal": {
+        "title": "Crea Nuovo Torneo",
+        "name": "Nome Torneo",
+        "sport": "Sport",
+        "startDate": "Data Inizio",
+        "endDate": "Data Fine",
+        "maxTeams": "Max Squadre"
+      },
+      "sports": {
+        "football": "Calcio",
+        "volleyball": "Pallavolo",
+        "basketball": "Pallacanestro"
+      }
+    },
+    "matches": {
+      "loading": "Caricamento partite torneo...",
+      "title": "Partite Torneo",
+      "backToTournament": "Torna al Torneo",
+      "createMatch": "Crea Partita",
+      "creating": "Creazione in corso...",
+      "setResult": "Imposta Risultato",
+      "updating": "Aggiornamento in corso...",
+      "saveResult": "Salva Risultato",
+      "tournament": "Torneo",
+      "createModal": {
+        "title": "Crea Nuova Partita",
+        "tournament": "Torneo",
+        "homeTeam": "Squadra Casa",
+        "awayTeam": "Squadra Trasferta",
+        "scheduled": "Programmata",
+        "round": "Turno"
+      },
+      "errors": {
+        "loadMatches": "Impossibile caricare le partite. Riprova.",
+        "updateScore": "Impossibile aggiornare il punteggio. Riprova."
+      }
+    },
+    "teams": {
+      "loading": "Caricamento squadre torneo...",
+      "notFound": "Torneo non trovato",
+      "backToTournaments": "Torna ai Tornei",
+      "teams": "squadre",
+      "players": "giocatori",
+      "createTeam": "Crea Squadra",
+      "creating": "Creazione in corso...",
+      "teamsTitle": "Squadre ({count})",
+      "viewTeam": "Vedi Squadra →",
+      "search": "Cerca",
+      "search_placeholder": "Cerca Squadra...",
+      "createModal": {
+        "title": "Crea Nuova Squadra",
+        "name": "Nome Squadra",
+        "sport": "Sport"
+      },
+      "sports": {
+        "football": "Calcio",
+        "volleyball": "Pallavolo",
+        "basketball": "Pallacanestro"
+      },
+      "errors": {
+        "loadTeams": "Impossibile caricare le squadre del torneo. Riprova.",
+        "createTeam": "Impossibile creare la squadra. Controlla la disponibilità del torneo."
+      }
     }
   }
 }

@@ -1,28 +1,32 @@
 {
   "home": {
     "title": "منصة إدارة البطولات",
-    "description": "نظم بطولات احترافية، وأدر فرقًا، واحجز ملاعب، وتابع المباريات في الوقت الفعلي.",
+    "description": "نظم بطولات احترافية، وأدر فرقًا، واحجز ملاعب، وتتبع المباريات في الوقت الفعلي.",
     "cta": {
       "browse": "تصفح البطولات",
       "bookField": "احجز ملعب"
     }
   },
   "navbar": {
+    "brandName": "مدير الرياضة",
     "tournaments": "البطولات",
     "fields": "الملاعب",
-    "welcome": "مرحباً، {{name}}",
+    "welcome": "مرحباً، {name}",
     "login": "تسجيل الدخول",
     "logout": "تسجيل الخروج",
-    "user": "مستخدم"
+    "user": "مستخدم",
+    "en": "English",
+    "it": "Italian",
+    "ar": "العربية"
   },
   "common": {
     "error": {
       "default": "حدث خطأ ما. يرجى المحاولة مرة أخرى."
     },
     "search": {
-      "placeholder": "البحث بالاسم أو البريد الإلكتروني..."
+      "placeholder": "البحث بالاسم، البريد الإلكتروني..."
     },
-    "noData": "لا توجد بيانات مطابقة لمعايير البحث"
+    "noData": "لا توجد بيانات مطابقة لمعاييرك"
   },
   "form": {
     "name": "الاسم",
@@ -32,9 +36,339 @@
     "password": "كلمة المرور",
     "role": "الدور"
   },
-  "pages": {
-    "adminUsers": {
-      "title": "إدارة المستخدمين"
+  "adminUsers": {
+    "title": "إدارة المستخدمين",
+    "loading": "جارٍ تحميل المستخدمين...",
+    "searchPlaceholder": "البحث بالبريد الإلكتروني، اسم المستخدم، الاسم، اللقب...",
+    "columns": {
+      "id": "المعرف",
+      "name": "الاسم",
+      "email": "البريد الإلكتروني",
+      "username": "اسم المستخدم",
+      "role": "الدور",
+      "tournaments": "البطولات المُنشأة"
+    },
+    "editModal": {
+      "title": "تعديل المستخدم",
+      "name": "الاسم",
+      "surname": "اللقب",
+      "email": "البريد الإلكتروني",
+      "username": "اسم المستخدم",
+      "role": "الدور"
+    },
+    "roles": {
+      "user": "مستخدم",
+      "admin": "مدير"
+    },
+    "suspendModal": {
+      "title": "تعليق المستخدم؟",
+      "message": "هل أنت متأكد من تعليق {user}؟ لن يتمكن من الوصول إلى حسابه.",
+      "user": "هذا المستخدم"
+    },
+    "cancel": "إلغاء",
+    "confirm": "تأكيد",
+    "suspending": "جارٍ التعليق..."
+  },
+  "auth": {
+    "login": {
+      "title": "تسجيل الدخول إلى حسابك",
+      "email": "عنوان البريد الإلكتروني",
+      "username": "اسم المستخدم",
+      "password": "كلمة المرور",
+      "submit": "تسجيل الدخول",
+      "submitting": "جارٍ تسجيل الدخول...",
+      "registerLink": "ليس لديك حساب؟ إنشاء حساب"
+    },
+    "register": {
+      "title": "إنشاء حسابك",
+      "name": "الاسم",
+      "surname": "اللقب",
+      "username": "اسم المستخدم",
+      "passwordConfirmation": "تأكيد كلمة المرور",
+      "email": "عنوان البريد الإلكتروني",
+      "password": "كلمة المرور",
+      "submit": "إنشاء الحساب",
+      "submitting": "جارٍ إنشاء الحساب...",
+      "loginLink": "لديك حساب بالفعل؟ تسجيل الدخول",
+      "matchPasswords": "كلمات المرور متطابقة ✓",
+      "notMatchPasswords": "كلمات المرور غير متطابقة"
+    }
+  },
+  "fields": {
+    "title": "الملاعب والحجوزات",
+    "backToTournaments": "العودة للبطولات",
+    "addField": "إضافة ملعب",
+    "creating": "جارٍ الإنشاء...",
+    "availableFields": "الملاعب المتاحة",
+    "players": "لاعبون",
+    "perHour": "للساعة",
+    "bookNow": "احجز الآن",
+    "booking": "جارٍ الحجز...",
+    "slotRange": "09:00 - 20:00",
+    "free": "مجاني",
+    "selectDateFirst": "اختر تاريخ لرؤية الفترات",
+    "selectSlots": "اختر الفترات",
+    "basePrice": "السعر الأساسي ${price}/ساعة",
+    "pickDate": "اختر تاريخ أولاً",
+    "seeAvailability": "لرؤية التوافر",
+    "selectStartEnd": "انقر البداية → النهاية",
+    "selectEndTime": "اختر وقت النهاية →",
+    "slotsFree": "فترات متاحة",
+    "pastTime": "وقت سابق",
+    "slotBooked": "الفترة محجوزة",
+    "startTime": "البداية",
+    "endTime": "النهاية",
+    "selectSlot": "اختر الفترة",
+    "overlapsBooking": "يتداخل مع حجز موجود",
+    "selectDate": "اختر التاريخ",
+    "selectSport": "اختر الرياضة",
+    "AllSports": "جميع الرياضات",
+    "clickSlot1h": "انقر الفترة 1س",
+    "clickFor1h": "انقر لـ 1س",
+    "selectSlot1h": "اختر الفترة 1س",
+    "search": "بحث",
+    "search_placeholder": "ابحث عن ملعب...",
+    "createModal": {
+      "title": "إضافة ملعب جديد",
+      "name": "اسم الملعب",
+      "sport": "الرياضة",
+      "capacity": "السعة",
+      "address": "العنوان",
+      "price": "السعر للساعة ($)"
+    },
+    "createField": "إنشاء ملعب",
+    "sports": {
+      "football": "كرة القدم",
+      "volleyball": "الكرة الطائرة",
+      "basketball": "كرة السلة"
+    },
+    "confirmBooking": "تأكيد الحجز؟",
+    "errors": {
+      "fields": "فشل تحميل الملاعب. حاول مرة أخرى.",
+      "bookings": "فشل تحميل الحجوزات. حاول مرة أخرى.",
+      "createField": "فشل إنشاء الملعب. حاول مرة أخرى.",
+      "bookField": "فشل حجز الملعب. تحقق من التوافر وحاول مرة أخرى."
+    },
+    "loading": "جارٍ تحميل الملاعب..."
+  },
+  "profile": {
+    "loading": "جارٍ تحميل الملف الشخصي...",
+    "notFound": "الملف الشخصي غير موجود",
+    "memberSince": "عضو منذ 2025",
+    "settingsTitle": "إعدادات الملف الشخصي",
+    "editProfile": "تعديل الملف الشخصي",
+    "updating": "جارٍ التحديث...",
+    "username": "اسم المستخدم",
+    "email": "البريد الإلكتروني",
+    "notSet": "غير محدد",
+    "tournamentsTitle": "بطولاتي ({count})",
+    "createTournament": "إنشاء بطولة",
+    "noTournaments": "لا توجد بطولات مُنشأة بعد",
+    "createFirst": "أنشئ أول بطولة",
+    "teams": "فرق",
+    "edit": "تعديل",
+    "delete": "حذف",
+    "myBookingsTitle": "حجوزاتي",
+    "confirmCancelBooking": "هل أنت متأكد من إلغاء هذا الحجز؟",
+    "confirmDeleteTournament": "هل أنت متأكد من حذف هذه البطولة؟",
+    "cancelBooking": "إلغاء الحجز",
+    "editTournament": "تعديل البطولة",
+    "updateButton": "تحديث",
+    "createButton": "إنشاء",
+    "noBookings": "لا توجد حجوزات بعد",
+    "sports": {
+      "football": "كرة القدم",
+      "volleyball": "الكرة الطائرة",
+      "basketball": "كرة السلة"
+    },
+    "modal": {
+      "name": "البطولة",
+      "sport": "الرياضة",
+      "startDate": "تاريخ البداية",
+      "endDate": "تاريخ النهاية",
+      "maxTeams": "أقصى عدد فرق"
+    },
+    "editModal": {
+      "title": "تعديل الملف الشخصي"
+    },
+    "saveChanges": "حفظ التغييرات"
+  },
+  "teams": {
+    "detail": {
+      "loading": "جارٍ تحميل الفريق...",
+      "notFound": "الفريق غير موجود",
+      "backToTournaments": "العودة للبطولات",
+      "backToTeams": "العودة للفرق",
+      "addPlayer": "إضافة لاعب",
+      "adding": "جارٍ الإضافة...",
+      "rosterTitle": "قائمة اللاعبين ({count} لاعب)",
+      "jersey": "#",
+      "name": "الاسم",
+      "position": "المركز",
+      "captain": "القائد",
+      "actions": "الإجراءات",
+      "captainLabel": "القائد",
+      "remove": "إزالة",
+      "removing": "جارٍ الإزالة...",
+      "noPlayers": "لا يوجد لاعبون بعد. أضف أول لاعب!",
+      "search": "بحث",
+      "search_placeholder": "ابحث عن لاعب...",
+      "addModal": {
+        "title": "إضافة لاعب جديد",
+        "name": "الاسم",
+        "position": "المركز",
+        "jersey": "الرقم #",
+        "captain": "القائد"
+      },
+      "errors": {
+        "loadTeam": "فشل تحميل الفريق. حاول مرة أخرى.",
+        "addPlayer": "فشل إضافة اللاعب. حاول مرة أخرى.",
+        "deletePlayer": "فشل إزالة اللاعب. حاول مرة أخرى."
+      },
+      "positions": {
+        "goalkeeper": "حارس مرمى",
+        "center_back": "ظهير مركزي",
+        "right_back": "ظهير أيمن",
+        "left_back": "ظهير أيسر",
+        "defensive_midfielder": "وسط دفاعي",
+        "central_midfielder": "وسط مركزي",
+        "attacking_midfielder": "وسط هجومي",
+        "right_winger": "جناح أيمن",
+        "left_winger": "جناح أيسر",
+        "striker": "مهاجم",
+
+        "point_guard": "لاعب خلفي",
+        "shooting_guard": "شوتر",
+        "small_forward": "جناح صغير",
+        "power_forward": "جناح قوي",
+        "center": "سنتر",
+
+        "setter": "راكم",
+        "outside_hitter": "مهاجم خارجي",
+        "opposite_hitter": "مهاجم معاكس",
+        "middle_blocker": "مانع وسط",
+        "libero": "ليبيرو",
+        "defensive_specialist": "متخصص دفاعي"
+      },
+      "confirmDeletePlayer": "إزالة هذا اللاعب؟"
+    }
+  },
+  "tournaments": {
+    "detail": {
+      "loading": "جارٍ تحميل البطولة...",
+      "notFound": "البطولة غير موجودة",
+      "backToTournaments": "العودة للبطولات",
+      "teams": "فرق",
+      "standingsTitle": "الترتيب",
+      "standings": {
+        "pos": "الترتيب",
+        "team": "الفريق",
+        "p": "م",
+        "w": "ف",
+        "d": "ت",
+        "l": "خ",
+        "gd": "فرق الأهداف",
+        "pts": "النقاط"
+      },
+      "viewMatches": "عرض المباريات →",
+      "teamsTitle": "{current}/{max} فريق",
+      "viewAll": "عرض جميع الفرق",
+      "teamDetails": "تفاصيل الفريق",
+      "createTeam": "إنشاء فريق",
+      "creating": "جارٍ الإنشاء...",
+      "createModal": {
+        "title": "إنشاء فريق لـ {tournament}",
+        "name": "اسم الفريق",
+        "sport": "الرياضة"
+      },
+      "sports": {
+        "football": "كرة القدم",
+        "volleyball": "الكرة الطائرة",
+        "basketball": "كرة السلة"
+      },
+      "changeStatusConfirmation": "هل أنت متأكد من تغيير حالة البطولة"
+    },
+    "list": {
+      "loading": "جارٍ تحميل البطولات...",
+      "title": "البطولات",
+      "teams": "فرق",
+      "createButton": "إنشاء بطولة",
+      "starts": "تبدأ: {date}",
+      "teamCount": "{current}/{max} فريق",
+      "viewDetails": "عرض التفاصيل",
+      "selectDate": "اختر التاريخ",
+      "selectSport": "اختر الرياضة",
+      "AllSports": "جميع الرياضات",
+      "search": "بحث",
+      "search_placeholder": "ابحث عن بطولة...",
+      "edit": "تعديل",
+      "delete": "حذف",
+      "editTournament": "تعديل البطولة",
+      "updateButton": "تحديث",
+      "confirmDeleteTournament": "هل أنت متأكد من حذف هذه البطولة؟",
+      "modal": {
+        "title": "إنشاء بطولة جديدة",
+        "name": "اسم البطولة",
+        "sport": "الرياضة",
+        "startDate": "تاريخ البداية",
+        "endDate": "تاريخ النهاية",
+        "maxTeams": "أقصى عدد فرق"
+      },
+      "sports": {
+        "football": "كرة القدم",
+        "volleyball": "الكرة الطائرة",
+        "basketball": "كرة السلة"
+      }
+    },
+    "matches": {
+      "loading": "جارٍ تحميل مباريات البطولة...",
+      "title": "مباريات البطولة",
+      "backToTournament": "العودة للبطولة",
+      "createMatch": "إنشاء مباراة",
+      "creating": "جارٍ الإنشاء...",
+      "setResult": "تحديد النتيجة",
+      "updating": "جارٍ التحديث...",
+      "saveResult": "حفظ النتيجة",
+      "tournament": "البطولة",
+      "createModal": {
+        "title": "إنشاء مباراة جديدة",
+        "tournament": "البطولة",
+        "homeTeam": "فريق الأساس",
+        "awayTeam": "فريق الضيوف",
+        "scheduled": "المجدولة",
+        "round": "الجولة"
+      },
+      "errors": {
+        "loadMatches": "فشل تحميل المباريات. حاول مرة أخرى.",
+        "updateScore": "فشل تحديث النتيجة. حاول مرة أخرى."
+      }
+    },
+    "teams": {
+      "loading": "جارٍ تحميل فرق البطولة...",
+      "notFound": "البطولة غير موجودة",
+      "backToTournaments": "العودة للبطولات",
+      "teams": "فرق",
+      "players": "لاعبون",
+      "createTeam": "إنشاء فريق",
+      "creating": "جارٍ الإنشاء...",
+      "teamsTitle": "الفرق ({count})",
+      "viewTeam": "عرض الفريق →",
+      "search": "بحث",
+      "search_placeholder": "ابحث عن فريق...",
+      "createModal": {
+        "title": "إنشاء فريق جديد",
+        "name": "اسم الفريق",
+        "sport": "الرياضة"
+      },
+      "sports": {
+        "football": "كرة القدم",
+        "volleyball": "الكرة الطائرة",
+        "basketball": "كرة السلة"
+      },
+      "errors": {
+        "loadTeams": "فشل تحميل فرق البطولة. حاول مرة أخرى.",
+        "createTeam": "فشل إنشاء الفريق. تحقق من توافر البطولة."
+      }
     }
   }
 }

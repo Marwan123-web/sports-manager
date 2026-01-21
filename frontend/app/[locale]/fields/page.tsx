@@ -112,12 +112,12 @@ export default function FieldsPage() {
       {/* Header */}
       <div className="flex justify-between items-center">
         <div>
-          <Link
+          {/* <Link
             href="/tournaments"
             className="text-indigo-600 hover:text-indigo-500 mb-2 inline-block"
           >
             ← {t("backToTournaments")}
-          </Link>
+          </Link> */}
           <h1 className="text-4xl font-bold text-gray-900">{t("title")}</h1>
         </div>
         {isAdmin && (

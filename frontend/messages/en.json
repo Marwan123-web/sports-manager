@@ -8,12 +8,16 @@
     }
   },
   "navbar": {
+    "brandName": "Sports Manager",
     "tournaments": "Tournaments",
     "fields": "Fields",
     "welcome": "Hi, {name}",
     "login": "Log In",
     "logout": "Logout",
-    "user": "User"
+    "user": "User",
+    "en": "English",
+    "it": "Italian",
+    "ar": "Arabic"
   },
   "common": {
     "error": {

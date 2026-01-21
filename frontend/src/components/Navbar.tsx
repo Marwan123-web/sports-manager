@@ -1,12 +1,13 @@
 "use client";
 import Link from "next/link";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import { useAuth } from "@/hooks/useAuth";
 import { Button } from "@/components/ui/button";
 import { useRouter, usePathname } from "next/navigation";
 
 export default function Navbar() {
   const t = useTranslations("navbar");
+  const locale = useLocale();
   const { user, logout } = useAuth();
   const router = useRouter();
   const pathname = usePathname();
@@ -21,6 +22,14 @@ export default function Navbar() {
     router.push("/");
   };
 
+  const handleLocaleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const newLocale = e.target.value;
+    console.log("newLocale", newLocale);
+    locale;
+    document.cookie = `NEXT_LOCALE=${newLocale}; path=/; max-age=31536000`;
+    router.refresh();
+  };
+
   return (
     <nav className="border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50">
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
@@ -28,7 +37,7 @@ export default function Navbar() {
           href="/"
           className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent"
         >
-          Tournaments
+          {t("brandName")}
         </Link>
 
         <div className="flex items-center space-x-4">
@@ -43,6 +52,17 @@ export default function Navbar() {
               {item.label}
             </Link>
           ))}
+
+          {/* Language Switcher Dropdown */}
+          <select
+            value={locale}
+            onChange={handleLocaleChange}
+            className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-sm"
+          >
+            <option value="en">{t("en")}</option>{" "}
+            <option value="it">{t("it")}</option>{" "}
+            {/* <option value="ar">{t("ar")}</option> */}
+          </select>
 
           {user ? (
             <>
