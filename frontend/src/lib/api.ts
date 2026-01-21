@@ -36,7 +36,7 @@ api.interceptors.response.use(
   (error: unknown) => {
     if (error instanceof AxiosError) {
       toast.error(
-        error.response?.data?.message?.message[0] ||
+        error.response?.data?.message?.message![0] ||
           error.response?.data?.message?.message ||
           error.response?.data?.message?.en
       );
@@ -48,7 +48,7 @@ api.interceptors.response.use(
 export const getErrorMessage = (error: unknown): string => {
   if (error instanceof AxiosError) {
     return (
-      error.response?.data?.message?.message[0] ||
+      error.response?.data?.message?.message![0] ||
       error.response?.data?.message?.message ||
       error.response?.data?.message?.en ||
       error.message ||

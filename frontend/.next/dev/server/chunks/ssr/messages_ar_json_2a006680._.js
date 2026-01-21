@@ -1,0 +1,7 @@
+module.exports = [
+"[project]/messages/ar.json (json)", ((__turbopack_context__) => {
+
+__turbopack_context__.v({"home":{"title":"منصة إدارة البطولات","description":"نظم بطولات احترافية، وأدر فرقًا، واحجز ملاعب، وتابع المباريات في الوقت الفعلي.","cta":{"browse":"تصفح البطولات","bookField":"احجز ملعب"}},"navbar":{"tournaments":"البطولات","fields":"الملاعب","welcome":"مرحباً، {{name}}","login":"تسجيل الدخول","logout":"تسجيل الخروج","user":"مستخدم"},"common":{"error":{"default":"حدث خطأ ما. يرجى المحاولة مرة أخرى."},"search":{"placeholder":"البحث بالاسم أو البريد الإلكتروني..."},"noData":"لا توجد بيانات مطابقة لمعايير البحث"},"form":{"name":"الاسم","surname":"اللقب","email":"البريد الإلكتروني","username":"اسم المستخدم","password":"كلمة المرور","role":"الدور"},"pages":{"adminUsers":{"title":"إدارة المستخدمين"}}});}),
+];
+
+//# sourceMappingURL=messages_ar_json_2a006680._.js.map
