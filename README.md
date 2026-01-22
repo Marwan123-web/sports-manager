@@ -16,4 +16,6 @@ git clone https://github.com/Marwan123-web/sports-manager.git
 cd sports-manager
 cp .env.example .env
 docker compose up -d --build
+# to run test data
+docker exec -i sports-manager-salman-db-1 psql -U marwansalman -d sportsclub < seed-test-data.sql
 ```

@@ -35,27 +35,28 @@ api.interceptors.response.use(
   (response) => response,
   (error: unknown) => {
     if (error instanceof AxiosError) {
-      toast.error(
-        error.response?.data?.message?.message![0] ||
-          error.response?.data?.message?.message ||
-          error.response?.data?.message?.en
-      );
+      toast.error(getErrorMessage(error));
     }
     return Promise.reject(error);
   }
 );
 
-export const getErrorMessage = (error: unknown): string => {
-  if (error instanceof AxiosError) {
-    return (
-      error.response?.data?.message?.message![0] ||
-      error.response?.data?.message?.message ||
-      error.response?.data?.message?.en ||
-      error.message ||
-      "Server error"
-    );
-  }
-  return "Network error. Please try again.";
+export const getErrorMessage = (error: AxiosError): string => {
+  const data = error.response?.data;
+  if (!data) return error.message || "Unknown error";
+
+  // Prioritize common paths
+  if (Array.isArray(data.message) && data.message.length > 0)
+    return data.message[0];
+  if (typeof data.message === "string") return data.message;
+
+  const nested = data.message?.message;
+  if (Array.isArray(nested) && nested.length > 0) return nested[0];
+  if (typeof nested === "string") return nested;
+
+  if (data.message?.en) return data.message.en;
+
+  return "An error occurred";
 };
 
 export const tournamentApi = {
